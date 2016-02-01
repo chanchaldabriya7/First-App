@@ -1,5 +1,6 @@
 package com.metacube.chanchal.loginapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +26,12 @@ public class MainActivity extends AppCompatActivity {
                 final String username = uname.getText().toString();
                 final String password = pass.getText().toString();
 
-                if(loginCheck(username,password))
-                    Toast.makeText(getApplicationContext(),"Hello  "+username,Toast.LENGTH_LONG).show();
+               if(loginCheck(username,password))
+                {
+                                    //Toast.makeText(getApplicationContext(),"Hello  "+username,Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(),ListViewActivity.class);
+                    startActivity(i);
+                }
                 else
                     Toast.makeText(getApplicationContext(),"Invalid Login",Toast.LENGTH_LONG).show();
             }
@@ -38,4 +42,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         return false;
     }
+
 }

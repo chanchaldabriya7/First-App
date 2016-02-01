@@ -60,5 +60,4 @@
         android:layout_below="@+id/label1" />
 
 
-
 </RelativeLayout>

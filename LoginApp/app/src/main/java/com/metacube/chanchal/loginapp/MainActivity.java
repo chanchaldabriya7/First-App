@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 {
                   Toast.makeText(getApplicationContext(),"Hello  "+username,Toast.LENGTH_SHORT).show();
                    Intent i = new Intent(getApplicationContext(),MyList.class);
+                    uname.setText("");  //reset the uname after login successful
+                    pass.setText("");   //reset the pass
                     startActivity(i);
                 }
                 else

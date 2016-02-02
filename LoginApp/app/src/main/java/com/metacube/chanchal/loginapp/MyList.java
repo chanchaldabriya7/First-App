@@ -13,14 +13,27 @@ public class MyList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list);
 
-        String fruits[]={"Apple","Banana","Cherry"};
+        String fruits[]={"Apple","Banana","Cherry","Mango"};
         Integer imgid[]={
                 R.mipmap.apple,
                 R.mipmap.banana,
-                R.mipmap.cherry
+                R.mipmap.cherry,
+                R.mipmap.mango
+        };
+        String descriptions[]={
+                "The apple tree (Malus domestica) is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple.",
+                "The banana is an edible fruit, botanically a berry, produced by several kinds of large herbaceous flowering plants in the genus Musa.",
+                "A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe (stone fruit).",
+                "The mango is a juicy stone fruit (drupe) belonging to the genus Mangifera, consisting of numerous tropical fruiting trees, cultivated mostly for edible fruit."
+        };
+        String time_posts[]={
+                "Yesterday",
+                "4.15 PM",
+                "SEP 22",
+                "OCT 31"
         };
         ListView list = (ListView) findViewById(R.id.listView);
-        CustomListAdapter ad = new CustomListAdapter(this,fruits,imgid);
+        CustomListAdapter ad = new CustomListAdapter(this,fruits,imgid,descriptions,time_posts);
         list.setAdapter(ad);
     }
 }

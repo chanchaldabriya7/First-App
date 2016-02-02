@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
                if(loginCheck(username,password))
                 {
-                                    //Toast.makeText(getApplicationContext(),"Hello  "+username,Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(getApplicationContext(),ListViewActivity.class);
+                  Toast.makeText(getApplicationContext(),"Hello  "+username,Toast.LENGTH_SHORT).show();
+                   Intent i = new Intent(getApplicationContext(),MyList.class);
                     startActivity(i);
                 }
                 else

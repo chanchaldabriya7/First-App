@@ -2,9 +2,12 @@ package com.metacube.chanchal.loginapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MyList extends AppCompatActivity {
 
@@ -35,5 +38,12 @@ public class MyList extends AppCompatActivity {
         ListView list = (ListView) findViewById(R.id.listView);
         CustomListAdapter ad = new CustomListAdapter(this,fruits,imgid,descriptions,time_posts);
         list.setAdapter(ad);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MyList.this,"Item "+position+" pressed.",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -2,7 +2,9 @@
 This project consists of two applications created from the learning point of view.
 # 1.FirstApp
 This is the conventional "Hello World" app created for Android environment.
-
+</br>
+<img src="https://cloud.githubusercontent.com/assets/16931460/12774111/a2559126-ca67-11e5-89a7-bbd2c0f94000.JPG" width="30%" height="25%"></img> <img src="https://cloud.githubusercontent.com/assets/16931460/12774113/a53a9e90-ca67-11e5-8add-f7d0170263ff.JPG" width="30%" height="25%></img> 
+</br>
 # 2.LoginApp
 This is a general example of a Login App.
 </br>

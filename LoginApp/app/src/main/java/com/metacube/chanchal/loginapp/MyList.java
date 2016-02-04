@@ -1,5 +1,6 @@
 package com.metacube.chanchal.loginapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,18 +17,16 @@ public class MyList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list);
 
-        String fruits[]={"Apple","Banana","Cherry","Mango"};
+        String brands[]={"Apple","Samsung","LG"};
         Integer imgid[]={
                 R.mipmap.apple,
-                R.mipmap.banana,
-                R.mipmap.cherry,
-                R.mipmap.mango
+                R.mipmap.samsung,
+                R.mipmap.lg
         };
         String descriptions[]={
-                "The apple tree (Malus domestica) is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple.",
-                "The banana is an edible fruit, botanically a berry, produced by several kinds of large herbaceous flowering plants in the genus Musa.",
-                "A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe (stone fruit).",
-                "The mango is a juicy stone fruit (drupe) belonging to the genus Mangifera, consisting of numerous tropical fruiting trees, cultivated mostly for edible fruit."
+                "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services.",
+                "Samsung was founded by Lee Byung-chul in 1938 as a trading company. Over the next three decades, the group diversified into areas including food processing, textiles, insurance, securities and retail.",
+                "LG Corporation  formerly Lucky Goldstar (Korean: Leokki Geumseong  ) is a South Korean multinational conglomerate corporation."
         };
         String time_posts[]={
                 "Yesterday",
@@ -36,13 +35,16 @@ public class MyList extends AppCompatActivity {
                 "OCT 31"
         };
         ListView list = (ListView) findViewById(R.id.listView);
-        CustomListAdapter ad = new CustomListAdapter(this,fruits,imgid,descriptions,time_posts);
+        CustomListAdapter ad = new CustomListAdapter(this,brands,imgid,descriptions,time_posts);
         list.setAdapter(ad);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MyList.this,"Item "+position+" pressed.",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MyList.this,"Item "+position+" pressed.",Toast.LENGTH_SHORT).show();
+                Intent expandable = new Intent(getApplicationContext(),MyExpandableList.class);
+                expandable.putExtra("id",position);
+                startActivity(expandable);
             }
         });
     }

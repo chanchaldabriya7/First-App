@@ -16,7 +16,7 @@ public class CustomListAdapter extends ArrayAdapter<String> {
     private final String[] tm;
 
     public CustomListAdapter(Activity context, String[] itemname, Integer[] imgid,String desc[],String tm[]) {
-        super(context, R.layout.sample_my_fruit_list_view, itemname);
+        super(context, R.layout.sample_my_brand_list_view, itemname);
         // TODO Auto-generated constructor stub
 
         this.context=context;
@@ -28,7 +28,7 @@ public class CustomListAdapter extends ArrayAdapter<String> {
 
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.sample_my_fruit_list_view, null, true);
+        View rowView=inflater.inflate(R.layout.sample_my_brand_list_view, null, true);
 
         ImageView logo = (ImageView) rowView.findViewById(R.id.logo);
         TextView text = (TextView) rowView.findViewById(R.id.title_text);

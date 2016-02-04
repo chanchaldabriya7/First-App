@@ -15,13 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListViewActivity" />
-        <activity android:name=".ListView" />
-        <activity
-            android:name=".FruitList"
-            android:label="@string/title_activity_fruit_list"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MyList"></activity>
+        <activity android:name=".MyList" />
+        <activity android:name=".MyExpandableList"></activity>
     </application>
 
 </manifest>

@@ -1,20 +1,12 @@
 # My-Apps
 This project consists of two applications created from the learning point of view.
-# 1.FirstApp
+### 1.FirstApp
 This is the conventional "Hello World" app created for Android environment.
-</br>
-<img src="https://cloud.githubusercontent.com/assets/16931460/12774111/a2559126-ca67-11e5-89a7-bbd2c0f94000.JPG" width="20%" height="25%"></img> &nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/16931460/12774113/a53a9e90-ca67-11e5-8add-f7d0170263ff.JPG" width="20%" height="25%></img>
-</br>
-</br>
-# 2.LoginApp
+### 2.LoginApp
 This is a general example of a Login App.
-</br>
-<img src="https://cloud.githubusercontent.com/assets/16931460/12773801/2c2cf78e-ca65-11e5-9c8a-17c65d23617b.JPG" width="20%" height="25%"></img>
-</br>
 Also this an example of List View has also been added as a new activity.
-</br>
-<img src="https://cloud.githubusercontent.com/assets/16931460/12773803/2ef6ae9c-ca65-11e5-8aa0-3253e7aea603.jpg" width="20%" height="25%" ></img>
-</br>
 On click action also added to the list view items.
 </br>
-<img src="https://cloud.githubusercontent.com/assets/16931460/12773805/31cc3682-ca65-11e5-8437-55c552950c41.png" width="20%" height="25%"></img> 
+Screenshots--
+</br></br>
+<img src="https://cloud.githubusercontent.com/assets/16931460/12840162/ab3f1f6e-cc06-11e5-8c14-4e7a6501d446.JPG" width="9%"></img> <img src="https://cloud.githubusercontent.com/assets/16931460/12840164/af5e0e66-cc06-11e5-9f32-434cb31a986b.JPG" width="9%"></img> <img src="https://cloud.githubusercontent.com/assets/16931460/12840076/c7993fc4-cc05-11e5-84d3-8485297bf32e.JPG" width="9%"></img> <img src="https://cloud.githubusercontent.com/assets/16931460/12840077/ca8b36f6-cc05-11e5-9846-4ccfd811b3a8.png" width="9%"></img> <img src="https://cloud.githubusercontent.com/assets/16931460/12840081/cc562392-cc05-11e5-8831-51b31892197d.JPG" width="9%"></img> <img src="https://cloud.githubusercontent.com/assets/16931460/12840082/cdbd01b0-cc05-11e5-9f95-bd1d7d95ec65.JPG" width="9%"></img> <img src="https://cloud.githubusercontent.com/assets/16931460/12840085/d3fc23ee-cc05-11e5-8778-c5a2f7fc9af4.JPG" width="9%"></img> 

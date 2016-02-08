@@ -47,7 +47,6 @@ public class MyList extends AppCompatActivity {
         final ListView list = (ListView) findViewById(R.id.listView);
         CustomListAdapter ad = new CustomListAdapter(this,brands,imgid,descriptions,time_posts);
         list.setAdapter(ad);
-        registerForContextMenu(list);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -67,13 +66,6 @@ public class MyList extends AppCompatActivity {
             }
         });
     }
-    /*@Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-             super.onCreateContextMenu(menu, v, menuInfo);
-            //Toast.makeText(this,"Inside",Toast.LENGTH_SHORT).show();
-
-    }*/
-
 }
 class ViewDialog {
 

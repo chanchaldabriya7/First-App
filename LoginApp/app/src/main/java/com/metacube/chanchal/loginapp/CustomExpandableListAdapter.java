@@ -1,6 +1,7 @@
 package com.metacube.chanchal.loginapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +27,8 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         this.parentDataSource = childParent;
 
         this.childDataSource = child;
-        this.menu_id = id;
 
+        this.menu_id = id;
     }
 
 

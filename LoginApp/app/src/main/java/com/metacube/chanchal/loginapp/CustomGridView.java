@@ -75,10 +75,10 @@ public class CustomGridView extends BaseAdapter {
                 switch (position) {
                     case 1:
                         intent=new Intent(context,MyList.class);
-                        startActivity();
+                        startActivity(HomeScreenCategories.this,);
                         break;
-                    case 2:
-                        intent1=new Intent(context,MainActivity.class);
+                    case 0:
+                        intent1=new Intent(context,ContactsActivity.class);
                         break;
                 }
             }

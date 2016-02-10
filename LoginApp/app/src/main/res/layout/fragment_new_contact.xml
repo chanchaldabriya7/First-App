@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewContactFragment"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Add New Contact Details"
+        android:id="@+id/textView_addnew"
+        android:layout_weight="0.05"
+        android:editable="false" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_addname"
+        android:hint="Contact name"
+        android:layout_weight="0.05" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_addno"
+        android:hint="Contact Number"
+        android:layout_weight="0.05" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Contact"
+        android:id="@+id/add_new"
+        android:layout_weight="0.05" />
+</LinearLayout>

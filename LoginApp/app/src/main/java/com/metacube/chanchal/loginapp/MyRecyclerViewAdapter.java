@@ -6,29 +6,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.SortedSet;
+import java.util.TreeMap;
+
 /**
  * Created by Chanchal on 08-02-2016.
  */
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
-    private String[] mDataset;
-
+    private TreeMap<String,Long> mDataset;
+    //private String[]name;
+    //private String[]no;
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextView;
+        public TextView name;
+        public TextView no;
+
         public ViewHolder(View v) {
             super(v);
-            mTextView=(TextView)v.findViewById(R.id.textView);
+            name=(TextView)v.findViewById(R.id.contact_name);
+            no=(TextView)v.findViewById(R.id.contact_no);
         }
     }
 
-    public MyRecyclerViewAdapter(String[] myDataset) {
+    public MyRecyclerViewAdapter(TreeMap<String,Long> myDataset) {
         mDataset = myDataset;
     }
-
+   /* public MyRecyclerViewAdapter(String[]name,String[]no)
+    {
+        this.name=name;
+        this.no=no;
+    }*/
     @Override
     public MyRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_text_view, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_contact_view, parent, false);
         // set the view's size, margins, paddings and layout parameters
        // ...
         ViewHolder vh = new ViewHolder(v);
@@ -40,13 +51,23 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+
+
+        SortedSet<String> keys=(SortedSet<String>)mDataset.keySet();
+        Object names[]=keys.toArray();
+        /*for(String s:names)
+            System.out.println(s);*/
+
+
+        holder.name.setText(names[position].toString());
+        holder.no.setText(mDataset.get(names[position]).toString());
+        //holder.no.setText(no[position]);
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();//name.length;
     }
 }

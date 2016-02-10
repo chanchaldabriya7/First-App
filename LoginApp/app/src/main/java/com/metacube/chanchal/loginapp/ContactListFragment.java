@@ -1,8 +1,7 @@
 package com.metacube.chanchal.loginapp;
 
-
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -64,16 +63,15 @@ public class ContactListFragment extends Fragment {
         adapter=new MyRecyclerViewAdapter(contacts);
         recyclerView.setAdapter(adapter);
 
-        Button add_new = (Button)container.findViewById(R.id.add_new_btn);
+        /*Button add_new = (Button)container.findViewById(R.id.add_new_btn);
         add_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
-        });
+        });*/
 
         return v;
-
 
     }
 

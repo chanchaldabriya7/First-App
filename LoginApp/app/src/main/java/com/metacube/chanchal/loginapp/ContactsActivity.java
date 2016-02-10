@@ -1,5 +1,6 @@
 package com.metacube.chanchal.loginapp;
 
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,7 @@ public class ContactsActivity extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
 
         ContactListFragment contactListFragment = new ContactListFragment();
-
+       // NewContactFragment newContactFragment = new NewContactFragment();
         fragmentTransaction.add(R.id.contact_space,contactListFragment);
         fragmentTransaction.commit();
     }

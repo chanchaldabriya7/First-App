@@ -1,30 +1,38 @@
 package com.metacube.chanchal.loginapp;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 
 public class ContactsActivity extends AppCompatActivity {
-
-
+    Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-        FragmentManager fragmentManager;
-        FragmentTransaction fragmentTransaction;
+        FragmentManager fragmentManager=getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        final ContactListFragment contactListFragment = new ContactListFragment();
 
-        fragmentManager=getFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-
-        ContactListFragment contactListFragment = new ContactListFragment();
-       // NewContactFragment newContactFragment = new NewContactFragment();
         fragmentTransaction.add(R.id.contact_space,contactListFragment);
         fragmentTransaction.commit();
+
+        btn= (Button) findViewById(R.id.btn_transition);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final NewContactFragment newContactFragment = new NewContactFragment();
+                FragmentManager fragmentManager=getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.contact_space,newContactFragment);
+                fragmentTransaction.commit();
+            }
+        });
     }
 }

@@ -1,8 +1,6 @@
 package com.metacube.chanchal.loginapp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
  * Created by Chanchal on 08-02-2016.
@@ -66,23 +63,6 @@ public class CustomGridView extends BaseAdapter {
         holder.tv.setText(result[position]);
         holder.img.setImageResource(imageId[position]);
 
-        /*rowView.setOnClickListener(new View.OnClickListener() {
-            Intent intent,intent1;
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_LONG).show();
-                switch (position) {
-                    case 1:
-                        intent=new Intent(context,MyList.class);
-                        startActivity(HomeScreenCategories.this,);
-                        break;
-                    case 0:
-                        intent1=new Intent(context,ContactsActivity.class);
-                        break;
-                }
-            }
-        });*/
         return rowView;
     }
 }

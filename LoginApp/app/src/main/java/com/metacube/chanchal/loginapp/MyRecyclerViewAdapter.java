@@ -14,8 +14,6 @@ import java.util.TreeMap;
  */
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
     private TreeMap<String,Long> mDataset;
-    //private String[]name;
-    //private String[]no;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public TextView no;
@@ -30,11 +28,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public MyRecyclerViewAdapter(TreeMap<String,Long> myDataset) {
         mDataset = myDataset;
     }
-   /* public MyRecyclerViewAdapter(String[]name,String[]no)
-    {
-        this.name=name;
-        this.no=no;
-    }*/
     @Override
     public MyRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
@@ -55,19 +48,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         SortedSet<String> keys=(SortedSet<String>)mDataset.keySet();
         Object names[]=keys.toArray();
-        /*for(String s:names)
-            System.out.println(s);*/
-
 
         holder.name.setText(names[position].toString());
         holder.no.setText(mDataset.get(names[position]).toString());
-        //holder.no.setText(no[position]);
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.size();//name.length;
+        return mDataset.size();
     }
 }

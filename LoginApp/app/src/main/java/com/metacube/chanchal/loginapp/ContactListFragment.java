@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import java.util.TreeMap;
 
 public class ContactListFragment extends Fragment {
@@ -56,10 +55,11 @@ public class ContactListFragment extends Fragment {
         TreeMap<String,Long> contacts = new TreeMap<String,Long>();
         for(int i=0;i<contacts_name.length;i++)
             contacts.put(contacts_name[i],Long.parseLong(contacts_no[i]));
-        recyclerView=(RecyclerView)container.findViewById(R.id.my_recycler_view);
+        recyclerView=(RecyclerView)v.findViewById(R.id.my_recycler_view);
+
         layoutManager=new LinearLayoutManager(getActivity());
+
         recyclerView.setLayoutManager(layoutManager);
-        // adapter=new MyRecyclerViewAdapter(contacts_name,contacts_no);
         adapter=new MyRecyclerViewAdapter(contacts);
         recyclerView.setAdapter(adapter);
 

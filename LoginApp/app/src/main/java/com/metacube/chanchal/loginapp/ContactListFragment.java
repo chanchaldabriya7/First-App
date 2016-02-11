@@ -4,6 +4,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import java.util.TreeMap;
 
-public class ContactListFragment extends Fragment {
+public class ContactListFragment extends Fragment implements Parcelable {
 
 
     private RecyclerView recyclerView;
@@ -78,7 +80,34 @@ public class ContactListFragment extends Fragment {
 
         return contact_list_view;
     }
-    protected void addNewContact(String name,Long number) {
+
+    /*protected void addNewContact(String name,Long number) {
         contacts.put(name, number);
+    }*/
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeMap(contacts);
+    }
+
+    public static final Parcelable.Creator<ContactListFragment> CREATOR
+            = new Parcelable.Creator<ContactListFragment>() {
+        public ContactListFragment createFromParcel(Parcel in) {
+            return new ContactListFragment(in);
+        }
+
+        public ContactListFragment[] newArray(int size) {
+            return new ContactListFragment[size];
+        }
+    };
+
+    /** recreate object from parcel */
+    private ContactListFragment(Parcel in) {
+        contacts = in.readMap();
     }
 }

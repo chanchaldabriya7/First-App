@@ -14,14 +14,14 @@ import android.widget.Toast;
  * Created by Chanchal on 08-02-2016.
  */
 public class CustomGridView extends BaseAdapter {
-    String [] result;
+    String [] names;
     Context context;
     Integer [] imageId;
     private static LayoutInflater inflater=null;
     public CustomGridView(Context mainActivity, String[] prgmNameList, Integer[] prgmImages) {
         // TODO Auto-generated constructor stub
-        result=prgmNameList;
         context=mainActivity;
+        names=prgmNameList;
         imageId=prgmImages;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -30,7 +30,7 @@ public class CustomGridView extends BaseAdapter {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return result.length;
+        return names.length;
     }
 
     @Override
@@ -45,11 +45,11 @@ public class CustomGridView extends BaseAdapter {
         return position;
     }
 
-    public class Holder
-    {
+    public class Holder {
         TextView tv;
         ImageView img;
     }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
@@ -60,7 +60,7 @@ public class CustomGridView extends BaseAdapter {
         holder.tv=(TextView) rowView.findViewById(R.id.gridText);
         holder.img=(ImageView) rowView.findViewById(R.id.gridImage);
 
-        holder.tv.setText(result[position]);
+        holder.tv.setText(names[position]);
         holder.img.setImageResource(imageId[position]);
 
         return rowView;

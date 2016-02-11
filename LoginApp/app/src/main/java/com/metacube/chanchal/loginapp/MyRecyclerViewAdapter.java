@@ -18,10 +18,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public TextView name;
         public TextView no;
 
-        public ViewHolder(View v) {
-            super(v);
-            name=(TextView)v.findViewById(R.id.contact_name);
-            no=(TextView)v.findViewById(R.id.contact_no);
+        public ViewHolder(View view) {
+            super(view);
+            name=(TextView)view.findViewById(R.id.contact_name);
+            no=(TextView)view.findViewById(R.id.contact_no);
         }
     }
 
@@ -32,11 +32,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public MyRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_contact_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_contact_view, parent, false);
         // set the view's size, margins, paddings and layout parameters
        // ...
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)

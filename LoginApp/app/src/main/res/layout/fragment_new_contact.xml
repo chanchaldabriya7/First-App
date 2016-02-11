@@ -13,7 +13,9 @@
         android:text="Add New Contact Details"
         android:id="@+id/textView_addnew"
         android:layout_weight="0.05"
-        android:editable="false" />
+        android:editable="false"
+        android:textColor="#060000"
+        android:textStyle="bold|italic" />
 
     <EditText
         android:layout_width="match_parent"

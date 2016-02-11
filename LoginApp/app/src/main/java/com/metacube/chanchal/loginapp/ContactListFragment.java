@@ -26,7 +26,7 @@ public class ContactListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_contact_list,container,false);
+        View contact_list_view=inflater.inflate(R.layout.fragment_contact_list,container,false);
         String []contacts_name={
                 "Anil Kumble",
                 "Kapil Dev",
@@ -55,10 +55,8 @@ public class ContactListFragment extends Fragment {
         TreeMap<String,Long> contacts = new TreeMap<String,Long>();
         for(int i=0;i<contacts_name.length;i++)
             contacts.put(contacts_name[i],Long.parseLong(contacts_no[i]));
-        recyclerView=(RecyclerView)v.findViewById(R.id.my_recycler_view);
-
+        recyclerView=(RecyclerView)contact_list_view.findViewById(R.id.my_recycler_view);
         layoutManager=new LinearLayoutManager(getActivity());
-
         recyclerView.setLayoutManager(layoutManager);
         adapter=new MyRecyclerViewAdapter(contacts);
         recyclerView.setAdapter(adapter);
@@ -71,8 +69,7 @@ public class ContactListFragment extends Fragment {
             }
         });*/
 
-        return v;
-
+        return contact_list_view;
     }
 
 }

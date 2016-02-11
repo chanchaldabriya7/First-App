@@ -26,13 +26,12 @@ public class MainActivity extends AppCompatActivity {
                 final String username = uname.getText().toString();
                 final String password = pass.getText().toString();
 
-               if(loginCheck(username,password))
-                {
-                  Toast.makeText(getApplicationContext(),"Hello  "+username,Toast.LENGTH_SHORT).show();
-                   Intent i = new Intent(getApplicationContext(),HomeScreenCategories.class);
+               if(loginCheck(username,password)) {
+                  Toast.makeText(getApplicationContext(),"Hello  "+username,Toast.LENGTH_LONG).show();
+                   Intent login_intent = new Intent(getApplicationContext(),HomeScreenCategories.class);
                     uname.setText("");  //reset the uname after login successful
                     pass.setText("");   //reset the pass
-                    startActivity(i);
+                    startActivity(login_intent);
                 }
                 else
                     Toast.makeText(getApplicationContext(),"Invalid Login",Toast.LENGTH_LONG).show();

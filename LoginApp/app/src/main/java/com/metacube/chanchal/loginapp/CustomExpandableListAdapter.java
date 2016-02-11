@@ -113,8 +113,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         ImageView content_img=(ImageView)view.findViewById(R.id.imageView);
         String main_text = null,sub_text = null;
         System.out.println(groupPosition+"\t"+childPosition);
-        switch (menu_id)
-        {
+        switch (menu_id) {
             case 0: //for apple
                 switch (groupPosition) {
                     case 0:

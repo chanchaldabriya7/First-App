@@ -9,6 +9,7 @@ import android.widget.Button;
 
 
 public class ContactsActivity extends AppCompatActivity {
+
     Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,4 +36,5 @@ public class ContactsActivity extends AppCompatActivity {
             }
         });
     }
+
 }

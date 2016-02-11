@@ -45,16 +45,16 @@ public class MyList extends AppCompatActivity {
                 "OCT 31"
         };
         final ListView list = (ListView) findViewById(R.id.listView);
-        CustomListAdapter ad = new CustomListAdapter(this,brands,imgid,descriptions,time_posts);
-        list.setAdapter(ad);
+        CustomListAdapter adapter = new CustomListAdapter(this,brands,imgid,descriptions,time_posts);
+        list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(MyList.this,"Item "+position+" pressed.",Toast.LENGTH_SHORT).show();
-                Intent expandable = new Intent(getApplicationContext(), MyExpandableList.class);
-                expandable.putExtra("id", position);
-                startActivity(expandable);
+                Intent intent_expandable = new Intent(getApplicationContext(), MyExpandableList.class);
+                intent_expandable.putExtra("id", position);
+                startActivity(intent_expandable);
             }
         });
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

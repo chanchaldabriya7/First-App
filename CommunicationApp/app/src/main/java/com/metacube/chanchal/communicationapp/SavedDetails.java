@@ -1,5 +1,6 @@
 package com.metacube.chanchal.communicationapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,13 +12,15 @@ public class SavedDetails extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     TextView textViewResult;
-    Button btnGetResult;
+    Button btnGetResult,btnList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_details);
 
         btnGetResult = (Button)findViewById(R.id.btn_getresult);
+        btnList = (Button) findViewById(R.id.btn_list);
+
         btnGetResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,6 +31,14 @@ public class SavedDetails extends AppCompatActivity {
 
                 textViewResult = (TextView) findViewById(R.id.result_text);
                 textViewResult.setText("Name- " + name + "\nEmail- " + email + "\nPhone No.- " + phone);
+            }
+        });
+
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentList = new Intent(getApplicationContext(),ContactList.class);
+                startActivity(intentList);
             }
         });
     }

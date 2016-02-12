@@ -8,8 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.metacube.chanchal.communicationapp.SavedDetails"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="351dp"
@@ -28,6 +28,13 @@
         android:layout_height="wrap_content"
         android:text="Get Result"
         android:id="@+id/btn_getresult"
-        android:layout_weight="0.04"
-        android:layout_gravity="center_horizontal" />
+        android:layout_weight="0.04" />
+
+    <Button
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:text="Show List"
+        android:id="@+id/btn_list"
+        android:layout_weight="0.04"/>
+
 </LinearLayout>

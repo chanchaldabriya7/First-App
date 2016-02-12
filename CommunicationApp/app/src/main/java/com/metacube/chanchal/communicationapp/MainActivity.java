@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         etPhone = (EditText) findViewById(R.id.phone);
         btnSave = (Button) findViewById(R.id.btn_save);
 
+
         sharedPreferences = getSharedPreferences("MyPreferences",MODE_PRIVATE);
 
         btnSave.setOnClickListener(new View.OnClickListener() {

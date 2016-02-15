@@ -33,4 +33,16 @@
         android:id="@+id/btn_list"
         android:layout_weight="0.04"/>
 
+    <Button
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:text="Call Me"
+        android:id="@+id/btn_call" />
+
+    <Button
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:text="Send e-mail"
+        android:id="@+id/btn_mail" />
+
 </LinearLayout>

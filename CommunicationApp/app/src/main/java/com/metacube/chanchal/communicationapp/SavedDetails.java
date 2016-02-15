@@ -2,6 +2,7 @@ package com.metacube.chanchal.communicationapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ public class SavedDetails extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     TextView textViewResult;
-    Button btnGetResult,btnList;
+    Button btnGetResult,btnList,btnCall,btnMail;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,8 @@ public class SavedDetails extends AppCompatActivity {
 
         btnGetResult = (Button)findViewById(R.id.btn_getresult);
         btnList = (Button) findViewById(R.id.btn_list);
-
+        btnCall = (Button)findViewById(R.id.btn_call);
+        btnMail = (Button)findViewById(R.id.btn_mail);
         btnGetResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,8 +49,30 @@ public class SavedDetails extends AppCompatActivity {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentList = new Intent(getApplicationContext(),CompanyList.class);
+                Intent intentList = new Intent(getApplicationContext(), CompanyList.class);
                 startActivity(intentList);
+            }
+        });
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:9856865654"));
+                startActivity(callIntent);
+            }
+        });
+        btnMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/html");
+                intent.putExtra(Intent.EXTRA_EMAIL, "emailaddress@emailaddress.com");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
+
+                startActivity(Intent.createChooser(intent, "Send Email"));
+
             }
         });
     }

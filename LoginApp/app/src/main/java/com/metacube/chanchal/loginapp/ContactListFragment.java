@@ -31,6 +31,14 @@ public class ContactListFragment extends Fragment implements AdapterView.OnClick
         interfaceVariable = (AccessMap)activity;
     }
 
+    /*@Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        this.activity = getActivity();
+        interfaceVariable = (AccessMap)activity;
+    }*/
+
     public ContactListFragment() {
         // Required empty public constructor
     }
@@ -42,11 +50,13 @@ public class ContactListFragment extends Fragment implements AdapterView.OnClick
         View contact_list_view=inflater.inflate(R.layout.fragment_contact_list,container,false);
 
         contacts = interfaceVariable.getMap();
+
         recyclerView = (RecyclerView)contact_list_view.findViewById(R.id.my_recycler_view);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new MyRecyclerViewAdapter(contacts);
         recyclerView.setAdapter(adapter);
+
         Button add_new = (Button)contact_list_view.findViewById(R.id.add_new_btn);
         add_new.setOnClickListener(this);
 

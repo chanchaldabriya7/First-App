@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SavedDetails" />
-        <activity android:name=".ContactList"></activity>
+        <activity android:name=".CompanyList" />
+        <activity android:name=".ShowListIndex"></activity>
     </application>
 
 </manifest>

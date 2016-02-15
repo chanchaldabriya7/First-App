@@ -37,7 +37,7 @@ public class SavedDetails extends AppCompatActivity {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentList = new Intent(getApplicationContext(),ContactList.class);
+                Intent intentList = new Intent(getApplicationContext(),CompanyList.class);
                 startActivity(intentList);
             }
         });

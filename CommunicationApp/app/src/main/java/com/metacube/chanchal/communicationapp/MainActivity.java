@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Communication App");
-        // Enable the Up button
-        actionBar.setDisplayHomeAsUpEnabled(true);
+       // actionBar.setDisplayHomeAsUpEnabled(false);        //Up button disabled for Main Activity
 
         etName = (EditText) findViewById(R.id.name);
         etEmail = (EditText) findViewById(R.id.email);

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SavedDetails extends AppCompatActivity {
 
@@ -78,9 +79,22 @@ public class SavedDetails extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_SUBJECT, name);
                 intent.putExtra(Intent.EXTRA_TEXT, "Contact Details\nName: "+name+"\nContact No.: "+phone);
 
-                startActivity(Intent.createChooser(intent, "Send Email with..."));
+                startActivityForResult(Intent.createChooser(intent, "Send Email with..."), 101);
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //super.onActivityResult(requestCode, resultCode, data);
+        //System.out.println("Inside Result method");
+        if(requestCode==101) {
+            finish();
+            if(resultCode==RESULT_OK)
+                Toast.makeText(getApplicationContext(),"Mail sent successfully",Toast.LENGTH_SHORT);
+            else
+                Toast.makeText(getApplicationContext(),"Mail sending failed",Toast.LENGTH_SHORT);
+        }
     }
 }

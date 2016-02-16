@@ -70,11 +70,11 @@ public class SavedDetails extends AppCompatActivity {
                 String name = sharedPreferences.getString("name", "default name");
                 Long phone = sharedPreferences.getLong("phone", 0);
 
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setData(Uri.parse("mailto:"));
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_EMAIL, "chanchaldabriya@gmail.com");
-                intent.putExtra(Intent.EXTRA_CC,email);
+                Intent intent = new Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto", email, null));
+               // intent.setData(Uri.parse("mailto:"));
+               // intent.setType("text/plain");
+                //intent.putExtra(Intent.EXTRA_EMAIL, new String[] {} );
+                intent.putExtra(Intent.EXTRA_CC,new String[] {"chanchaldabriya@outlook.com"} );
                 intent.putExtra(Intent.EXTRA_SUBJECT, name);
                 intent.putExtra(Intent.EXTRA_TEXT, "Contact Details\nName: "+name+"\nContact No.: "+phone);
 

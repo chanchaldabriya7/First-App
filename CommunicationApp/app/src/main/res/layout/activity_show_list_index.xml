@@ -12,7 +12,6 @@
         android:layout_width="336dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:id="@+id/index_details"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"

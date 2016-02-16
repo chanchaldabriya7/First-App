@@ -58,20 +58,27 @@ public class SavedDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:9856865654"));
+                callIntent.setData(Uri.parse("tel:9829077777"));
                 startActivity(callIntent);
             }
         });
         btnMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/html");
-                intent.putExtra(Intent.EXTRA_EMAIL, "emailaddress@emailaddress.com");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-                intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
+                sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                String email = sharedPreferences.getString("email","default email");
+                String name = sharedPreferences.getString("name", "default name");
+                Long phone = sharedPreferences.getLong("phone", 0);
 
-                startActivity(Intent.createChooser(intent, "Send Email"));
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("mailto:"));
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL, "chanchaldabriya@gmail.com");
+                intent.putExtra(Intent.EXTRA_CC,email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, name);
+                intent.putExtra(Intent.EXTRA_TEXT, "Contact Details\nName: "+name+"\nContact No.: "+phone);
+
+                startActivity(Intent.createChooser(intent, "Send Email with..."));
 
             }
         });

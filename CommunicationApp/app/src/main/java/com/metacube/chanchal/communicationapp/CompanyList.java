@@ -1,6 +1,5 @@
 package com.metacube.chanchal.communicationapp;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,7 +24,6 @@ public class CompanyList extends AppCompatActivity {
     Toolbar toolbar;
     Button btnAddCompany;
     @Override
-    @TargetApi(21)
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_list);
@@ -39,16 +37,33 @@ public class CompanyList extends AppCompatActivity {
         // Enable the Up button
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        final String companies[] = {
+        final String names[] = {
                 "Google",
                 "Microsoft",
                 "Apple",
                 "Samsung",
-                "Motorola",
                 "LG",
                 "XOLO",
-                "Sony"
+                "Sony",
+                "Ferrari",
+                "Twitter",
+                "Harley Davidson"
         };
+        final String categoires[] = {
+                "IT",
+                "IT",
+                "IT",
+                "Electronics",
+                "Mobile",
+                "Mobile",
+                "Electronics",
+                "Car",
+                "Social Network",
+                "Bike"
+        };
+        final String companies[] = new String[categoires.length];
+        for(int temp=0;temp<categoires.length;temp++)
+            companies[temp]=names[temp]+"("+categoires[temp]+")";
         list = (ListView)findViewById(R.id.companyList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,companies){
             @Override
@@ -70,7 +85,7 @@ public class CompanyList extends AppCompatActivity {
             }
         });
 
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        /*list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder dialogDelete = new AlertDialog.Builder(CompanyList.this);
@@ -103,30 +118,86 @@ public class CompanyList extends AppCompatActivity {
                 dialogDelete.show();
                 return true;
             }
-        });
+        });*/
         btnAddCompany = (Button) findViewById(R.id.btn_addcompany);
 
-       /* btnAddCompany.setOnClickListener(new View.OnClickListener() {
+        btnAddCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialogAdd = new AlertDialog.Builder(getApplicationContext());
-                //dialogAdd.setTitle("Add new Company...");
+                AlertDialog.Builder dialogAdd = new AlertDialog.Builder(CompanyList.this);
+                dialogAdd.setTitle("Add new Company...");
+                dialogAdd.setView(inflater.inflate(R.layout.dialog_add_form,null));
 
-                dialogAdd.setView(inflater.inflate(R.layout.dialog_add_form,null))
-                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                /*Button categorySelect = (Button) v.findViewById(R.id.btn_add_category);
+                categorySelect.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final String categ[] = {
+                                "IT",
+                                "Electronics",
+                                "Mobile",
+                                "Car",
+                                "Social Network",
+                                "Bike",
+                                "Food",
+                                "Travel",
+                                "Logistics"
+                        };
+
+                        AlertDialog.Builder listDialog = new AlertDialog.Builder(CompanyList.this);
+                        listDialog.setTitle("Select Category");
+                        listDialog.setItems(categ, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(), "You selected " + categ[which], Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        listDialog.show();
+                    }
+                });
+
+*/
+                dialogAdd.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to invoke YES event
                         Toast.makeText(getApplicationContext(), "Add new", Toast.LENGTH_SHORT).show();
                     }
-                })
+                });
 
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialogAdd.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to invoke YES event
                         Toast.makeText(getApplicationContext(), "Adding Cancelled", Toast.LENGTH_SHORT).show();
                     }
                 });
+
                 dialogAdd.show();
+            }
+        });
+        /*btnAddCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String categ[] = {
+                        "IT",
+                        "Electronics",
+                        "Mobile",
+                        "Car",
+                        "Social Network",
+                        "Bike",
+                        "Food",
+                        "Travel",
+                        "Logistics"
+                };
+
+                AlertDialog.Builder listDialog = new AlertDialog.Builder(CompanyList.this);
+                listDialog.setTitle("Select Category");
+                listDialog.setItems(categ, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "You selected " + categ[which], Toast.LENGTH_SHORT).show();
+                    }
+                });
+                listDialog.show();
             }
         });*/
     }

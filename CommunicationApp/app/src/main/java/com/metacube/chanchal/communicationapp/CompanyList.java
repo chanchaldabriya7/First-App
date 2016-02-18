@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class CompanyList extends AppCompatActivity {
     ListView list;
     Toolbar toolbar;
     Button btnAddCompany;
+    String companyCategory;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +87,7 @@ public class CompanyList extends AppCompatActivity {
             }
         });
 
-        /*list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder dialogDelete = new AlertDialog.Builder(CompanyList.this);
@@ -118,20 +120,22 @@ public class CompanyList extends AppCompatActivity {
                 dialogDelete.show();
                 return true;
             }
-        });*/
-        btnAddCompany = (Button) findViewById(R.id.btn_addcompany);
+        });
 
+        btnAddCompany = (Button) findViewById(R.id.btn_addcompany);
         btnAddCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder dialogAdd = new AlertDialog.Builder(CompanyList.this);
                 dialogAdd.setTitle("Add new Company...");
-                dialogAdd.setView(inflater.inflate(R.layout.dialog_add_form,null));
+                v = inflater.inflate(R.layout.dialog_add_form, null);
 
-                /*Button categorySelect = (Button) v.findViewById(R.id.btn_add_category);
+                //dialogAdd.setView(v);
+
+                Button categorySelect = (Button) v.findViewById(R.id.btn_add_category);
                 categorySelect.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(final View v) {
                         final String categ[] = {
                                 "IT",
                                 "Electronics",
@@ -141,7 +145,10 @@ public class CompanyList extends AppCompatActivity {
                                 "Bike",
                                 "Food",
                                 "Travel",
-                                "Logistics"
+                                "Logistics",
+                                "Tyre",
+                                "Transportation",
+                                "Sports Equipment"
                         };
 
                         AlertDialog.Builder listDialog = new AlertDialog.Builder(CompanyList.this);
@@ -150,13 +157,17 @@ public class CompanyList extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getApplicationContext(), "You selected " + categ[which], Toast.LENGTH_SHORT).show();
+                                companyCategory = categ[which];
                             }
                         });
                         listDialog.show();
                     }
                 });
 
-*/
+                EditText textCompanyCategory = (EditText)v.findViewById(R.id.add_company_category);
+                textCompanyCategory.setText(companyCategory);
+                dialogAdd.setView(v);
+
                 dialogAdd.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to invoke YES event
@@ -172,33 +183,9 @@ public class CompanyList extends AppCompatActivity {
                 });
 
                 dialogAdd.show();
+
             }
         });
-        /*btnAddCompany.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String categ[] = {
-                        "IT",
-                        "Electronics",
-                        "Mobile",
-                        "Car",
-                        "Social Network",
-                        "Bike",
-                        "Food",
-                        "Travel",
-                        "Logistics"
-                };
 
-                AlertDialog.Builder listDialog = new AlertDialog.Builder(CompanyList.this);
-                listDialog.setTitle("Select Category");
-                listDialog.setItems(categ, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "You selected " + categ[which], Toast.LENGTH_SHORT).show();
-                    }
-                });
-                listDialog.show();
-            }
-        });*/
     }
 }

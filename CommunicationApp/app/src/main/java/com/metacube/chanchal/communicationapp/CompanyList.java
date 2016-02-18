@@ -25,7 +25,7 @@ public class CompanyList extends AppCompatActivity implements View.OnClickListen
     Toolbar toolbar;
     Button btnAddCompany;
     String companyCategory;
-    View v;
+    View view;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,7 +123,7 @@ public class CompanyList extends AppCompatActivity implements View.OnClickListen
         });
 
         btnAddCompany = (Button) findViewById(R.id.btn_addcompany);
-        btnAddCompany.setOnClickListener(this);
+        btnAddCompany.setOnClickListener(this);     //go to onclick for add company
 
     }
 
@@ -131,45 +131,42 @@ public class CompanyList extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case  R.id.btn_addcompany:
-                addCompany();
+                addCompany();       //calls method for add company form in a dialog box
                 break;
             case R.id.btn_add_category:
-                addCategory(v);
+                addCategory();
                 break;
         }
     }
-
+    //method for add company form dialog box
     public void addCompany() {
         final LayoutInflater inflater = getLayoutInflater();
         AlertDialog.Builder dialogAdd = new AlertDialog.Builder(CompanyList.this);
         dialogAdd.setTitle("Add new Company...");
-        v = inflater.inflate(R.layout.dialog_add_form, null);
+        view = inflater.inflate(R.layout.dialog_add_form, null);
 
-        dialogAdd.setView(v);
+        dialogAdd.setView(view);
 
-        Button categorySelect = (Button) v.findViewById(R.id.btn_add_category);
-        setV(v);
+        Button categorySelect = (Button) view.findViewById(R.id.btn_add_category);
+        setView(view);        //sets the add company form dialog box view to class variable view to make it accessible to add category dialog box
         categorySelect.setOnClickListener(this);
-        dialogAdd.setView(v);
+        dialogAdd.setView(view);            //set add company form dialog box view to dialog box message field as a custom layout
 
         dialogAdd.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                // Write your code here to invoke YES event
                 Toast.makeText(getApplicationContext(), "Add new", Toast.LENGTH_SHORT).show();
             }
         });
 
         dialogAdd.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                // Write your code here to invoke YES event
                 Toast.makeText(getApplicationContext(), "Adding Cancelled", Toast.LENGTH_SHORT).show();
             }
         });
 
         dialogAdd.show();
-        //return v;
     }
-    public void addCategory(View v) {
+    public void addCategory() {
 
         final String categ[] = {
                 "IT",
@@ -181,9 +178,11 @@ public class CompanyList extends AppCompatActivity implements View.OnClickListen
                 "Food",
                 "Travel",
                 "Logistics",
-                "Tyre",
+                "Tyres",
                 "Transportation",
-                "Sports Equipment"
+                "Sports Equipment",
+                "Water",
+                "Electrical Equipments"
         };
 
         AlertDialog.Builder listDialog = new AlertDialog.Builder(CompanyList.this);
@@ -192,20 +191,19 @@ public class CompanyList extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getApplicationContext(), "You selected " + categ[which], Toast.LENGTH_SHORT).show();
-                companyCategory = categ[which];
-                EditText categoryTxt = (EditText) getV().findViewById(R.id.add_company_category);
-                categoryTxt.setText(companyCategory);
+                companyCategory = categ[which];         //setting category String to class variable companyCategory(String)
+                EditText categoryTxt = (EditText) getView().findViewById(R.id.add_company_category);
+                categoryTxt.setText(companyCategory);       //setting the category to category textbox
             }
         });
         listDialog.show();
-        //return v;
     }
 
-    public View getV() {
-        return v;
+    public View getView() {
+        return view;
     }
 
-    public void setV(View v) {
-        this.v = v;
+    public void setView(View view) {
+        this.view = view;
     }
 }

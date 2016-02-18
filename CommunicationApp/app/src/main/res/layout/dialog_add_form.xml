@@ -16,7 +16,7 @@
         android:layout_height="67dp"
         android:id="@+id/add_company_category"
         android:hint="Category"
-        />
+        android:editable="false" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

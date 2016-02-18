@@ -19,26 +19,25 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CompanyList extends AppCompatActivity {
+public class CompanyList extends AppCompatActivity implements View.OnClickListener {
 
     ListView list;
     Toolbar toolbar;
     Button btnAddCompany;
     String companyCategory;
+    View v;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_list);
-
-        final LayoutInflater inflater = getLayoutInflater();
-
+        //Setting up Action Bar
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Company List");
         // Enable the Up button
         actionBar.setDisplayHomeAsUpEnabled(true);
-
+        //Creating initial Company List
         final String names[] = {
                 "Google",
                 "Microsoft",
@@ -77,6 +76,7 @@ public class CompanyList extends AppCompatActivity {
             }
         };
         list.setAdapter(adapter);
+        //Defining on click on list item and passing index to next activity
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -86,7 +86,7 @@ public class CompanyList extends AppCompatActivity {
                 startActivity(intentShowIndex);
             }
         });
-
+        //Dialog with two buttons for delete list item on long item click
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -123,69 +123,89 @@ public class CompanyList extends AppCompatActivity {
         });
 
         btnAddCompany = (Button) findViewById(R.id.btn_addcompany);
-        btnAddCompany.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder dialogAdd = new AlertDialog.Builder(CompanyList.this);
-                dialogAdd.setTitle("Add new Company...");
-                v = inflater.inflate(R.layout.dialog_add_form, null);
+        btnAddCompany.setOnClickListener(this);
 
-                //dialogAdd.setView(v);
+    }
 
-                Button categorySelect = (Button) v.findViewById(R.id.btn_add_category);
-                categorySelect.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(final View v) {
-                        final String categ[] = {
-                                "IT",
-                                "Electronics",
-                                "Mobile",
-                                "Car",
-                                "Social Network",
-                                "Bike",
-                                "Food",
-                                "Travel",
-                                "Logistics",
-                                "Tyre",
-                                "Transportation",
-                                "Sports Equipment"
-                        };
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case  R.id.btn_addcompany:
+                addCompany();
+                break;
+            case R.id.btn_add_category:
+                addCategory(v);
+                break;
+        }
+    }
 
-                        AlertDialog.Builder listDialog = new AlertDialog.Builder(CompanyList.this);
-                        listDialog.setTitle("Select Category");
-                        listDialog.setItems(categ, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(), "You selected " + categ[which], Toast.LENGTH_SHORT).show();
-                                companyCategory = categ[which];
-                            }
-                        });
-                        listDialog.show();
-                    }
-                });
+    public void addCompany() {
+        final LayoutInflater inflater = getLayoutInflater();
+        AlertDialog.Builder dialogAdd = new AlertDialog.Builder(CompanyList.this);
+        dialogAdd.setTitle("Add new Company...");
+        v = inflater.inflate(R.layout.dialog_add_form, null);
 
-                EditText textCompanyCategory = (EditText)v.findViewById(R.id.add_company_category);
-                textCompanyCategory.setText(companyCategory);
-                dialogAdd.setView(v);
+        dialogAdd.setView(v);
 
-                dialogAdd.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Write your code here to invoke YES event
-                        Toast.makeText(getApplicationContext(), "Add new", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        Button categorySelect = (Button) v.findViewById(R.id.btn_add_category);
+        setV(v);
+        categorySelect.setOnClickListener(this);
+        dialogAdd.setView(v);
 
-                dialogAdd.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Write your code here to invoke YES event
-                        Toast.makeText(getApplicationContext(), "Adding Cancelled", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                dialogAdd.show();
-
+        dialogAdd.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Write your code here to invoke YES event
+                Toast.makeText(getApplicationContext(), "Add new", Toast.LENGTH_SHORT).show();
             }
         });
 
+        dialogAdd.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Write your code here to invoke YES event
+                Toast.makeText(getApplicationContext(), "Adding Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialogAdd.show();
+        //return v;
+    }
+    public void addCategory(View v) {
+
+        final String categ[] = {
+                "IT",
+                "Electronics",
+                "Mobile",
+                "Car",
+                "Social Network",
+                "Bike",
+                "Food",
+                "Travel",
+                "Logistics",
+                "Tyre",
+                "Transportation",
+                "Sports Equipment"
+        };
+
+        AlertDialog.Builder listDialog = new AlertDialog.Builder(CompanyList.this);
+        listDialog.setTitle("Select Category");
+        listDialog.setItems(categ, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "You selected " + categ[which], Toast.LENGTH_SHORT).show();
+                companyCategory = categ[which];
+                EditText categoryTxt = (EditText) getV().findViewById(R.id.add_company_category);
+                categoryTxt.setText(companyCategory);
+            }
+        });
+        listDialog.show();
+        //return v;
+    }
+
+    public View getV() {
+        return v;
+    }
+
+    public void setV(View v) {
+        this.v = v;
     }
 }

@@ -16,8 +16,9 @@ public class SavedDetails extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     TextView textViewResult;
-    Button btnGetResult,btnList,btnCall,btnMail;
+    Button btnGetResult,btnList,btnCall,btnMail,btnCam;
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,8 @@ public class SavedDetails extends AppCompatActivity {
         btnList = (Button) findViewById(R.id.btn_list);
         btnCall = (Button)findViewById(R.id.btn_call);
         btnMail = (Button)findViewById(R.id.btn_mail);
+        btnCam = (Button) findViewById(R.id.btn_cam);
+
         btnGetResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,15 +80,25 @@ public class SavedDetails extends AppCompatActivity {
                 //intent.putExtra(Intent.EXTRA_EMAIL, new String[] {} );
                 intent.putExtra(Intent.EXTRA_CC,new String[] {"chanchaldabriya@outlook.com"} );
                 intent.putExtra(Intent.EXTRA_SUBJECT, name);
-                intent.putExtra(Intent.EXTRA_TEXT, "Contact Details\nName: "+name+"\nContact No.: "+phone);
+                intent.putExtra(Intent.EXTRA_TEXT, "Contact Details\nName: " + name + "\nContact No.: " + phone);
 
                 startActivityForResult(Intent.createChooser(intent, "Send Email with..."), 101);
 
             }
         });
+        btnCam.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent camActivity = new Intent(getApplicationContext(),CamPicActivity.class);
+                startActivity(camActivity);
+
+            }
+        });
+
     }
 
-    @Override
+/* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //super.onActivityResult(requestCode, resultCode, data);
         //System.out.println("Inside Result method");
@@ -96,5 +109,5 @@ public class SavedDetails extends AppCompatActivity {
             else
                 Toast.makeText(getApplicationContext(),"Mail sending failed",Toast.LENGTH_SHORT);
         }
-    }
+    }*/
 }

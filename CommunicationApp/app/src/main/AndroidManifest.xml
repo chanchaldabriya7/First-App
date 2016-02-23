@@ -27,7 +27,8 @@
         <activity
             android:name=".ShowListIndex"
             android:parentActivityName=".CompanyList" />
-        <activity android:name=".CamPicActivity"></activity>
+        <activity android:name=".CamPicActivity"
+            android:parentActivityName=".SavedDetails"></activity>
     </application>
 
 </manifest>

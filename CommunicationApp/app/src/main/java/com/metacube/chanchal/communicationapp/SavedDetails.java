@@ -61,8 +61,10 @@ public class SavedDetails extends AppCompatActivity {
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                Long phone = sharedPreferences.getLong("phone", 0);
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:9829077777"));
+                callIntent.setData(Uri.parse("tel:"+phone));
                 startActivity(callIntent);
             }
         });
@@ -92,13 +94,12 @@ public class SavedDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent camActivity = new Intent(getApplicationContext(),CamPicActivity.class);
                 startActivity(camActivity);
-
             }
         });
 
     }
 
-/* @Override
+/* @Override                        //Mail Status
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //super.onActivityResult(requestCode, resultCode, data);
         //System.out.println("Inside Result method");

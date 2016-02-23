@@ -33,28 +33,37 @@ public class MainActivity extends AppCompatActivity {
         etPhone = (EditText) findViewById(R.id.phone);
         btnSave = (Button) findViewById(R.id.btn_save);
 
-
         sharedPreferences = getSharedPreferences("MyPreferences",MODE_PRIVATE);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = etName.getText().toString();
-                long no = Long.parseLong(etPhone.getText().toString());
-                String email = etEmail.getText().toString();
-
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("name", name);
-                editor.putString("email", email);
-                editor.putLong("phone", no);
-                editor.commit();
-                Toast.makeText(MainActivity.this, "Thanks", Toast.LENGTH_LONG).show();
-                etName.setText("");
-                etEmail.setText("");
-                etPhone.setText("");
-                Intent intent_save = new Intent(getApplicationContext(), SavedDetails.class);
-                startActivity(intent_save);
+                if(validateAll(etName,etPhone,etEmail)) {
+                    String name = etName.getText().toString();
+                    long no = Long.parseLong(etPhone.getText().toString());
+                    String email = etEmail.getText().toString();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("name", name);
+                    editor.putString("email", email);
+                    editor.putLong("phone", no);
+                    editor.commit();
+                    Toast.makeText(MainActivity.this, "Thanks", Toast.LENGTH_LONG).show();
+                    etName.setText("");
+                    etEmail.setText("");
+                    etPhone.setText("");
+                    Intent intent_save = new Intent(getApplicationContext(), SavedDetails.class);
+                    startActivity(intent_save);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    protected boolean validateAll(EditText ... ets) {
+        for(int i=0;i<ets.length;i++)
+            if(ets[i].getText().toString().isEmpty())
+                return false;
+        return true;
     }
 }

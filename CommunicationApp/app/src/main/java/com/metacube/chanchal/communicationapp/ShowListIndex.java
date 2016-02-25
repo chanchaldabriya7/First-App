@@ -1,5 +1,6 @@
 package com.metacube.chanchal.communicationapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -15,6 +16,7 @@ public class ShowListIndex extends AppCompatActivity {
     Button btnShowIndex;
     TextView indexDetails;
     Toolbar myToolbar;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +35,40 @@ public class ShowListIndex extends AppCompatActivity {
         btnShowIndex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog = new ProgressDialog(v.getContext());
+                progressDialog.setMessage("Fetching Data...");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                progressDialog.setIndeterminate(false);
+                progressDialog.setProgress(0);
+                progressDialog.show();
+
+                final int totalProgressTime = 100;
+                final Thread t = new Thread() {
+                    @Override
+                    public void run() {
+                        int jumpTime = 0;
+
+                        while(jumpTime < totalProgressTime) {
+                            try {
+                                sleep(600);
+                                jumpTime += 1;
+                                progressDialog.setProgress(jumpTime);
+                            }
+                            catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
+                        progressDialog.dismiss();
+                    }
+                };
+                t.start();
                 Intent received = getIntent();
                 int index = received.getIntExtra("index", 0);
                 String listItem[] = received.getStringArrayExtra("company names");
 
                 String resultText = "You pressed "+listItem[index]+" which is at index "+index;
+                System.out.println("Inside the spcl loop");
                 indexDetails.setText(resultText);
                 Toast.makeText(getApplicationContext(),resultText,Toast.LENGTH_LONG).show();
             }

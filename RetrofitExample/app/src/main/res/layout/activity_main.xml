@@ -9,8 +9,9 @@
     <include layout="@layout/my_toolbar" />
 
     <ListView
-        android:layout_width="394dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/list_questions"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"/>
 </LinearLayout>

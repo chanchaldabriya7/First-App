@@ -9,5 +9,4 @@
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    android:visibility="visible"
-    android:foreground="#ffffff" />
+    android:visibility="visible" />

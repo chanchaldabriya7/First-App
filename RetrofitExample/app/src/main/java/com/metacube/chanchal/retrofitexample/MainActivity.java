@@ -1,6 +1,6 @@
 package com.metacube.chanchal.retrofitexample;
 
-import android.os.CountDownTimer;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_call_api:
                 getResultFromAPI();
                 return true;
+            case R.id.btn_timer:
+                Intent timerIntent = new Intent(getApplicationContext(),ActivityCountDownTimer.class);
+                startActivity(timerIntent);
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -1,5 +1,6 @@
 package com.metacube.chanchal.retrofitexample;
 
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,6 @@ import android.widget.TextView;
 public class ActivityCountDownTimer extends AppCompatActivity implements View.OnClickListener {
 
     Toolbar toolbar;
-    private static final String tag = "Main";
     private MyCountDownTimer countDownTimer;
     private long timeElapsed;
     private boolean timerHasStarted = false;
@@ -21,7 +21,7 @@ public class ActivityCountDownTimer extends AppCompatActivity implements View.On
     private TextView timeElapsedView;
 
     private final long startTime = 50000;
-    private final long interval = 1000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +30,7 @@ public class ActivityCountDownTimer extends AppCompatActivity implements View.On
         toolbar = (Toolbar) findViewById(R.id.my_actiontoolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("CountDownTimer");
+        actionBar.setTitle(R.string.activity_countdown_timer);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
@@ -39,8 +39,10 @@ public class ActivityCountDownTimer extends AppCompatActivity implements View.On
 
         text = (TextView) this.findViewById(R.id.timer);
         timeElapsedView = (TextView) this.findViewById(R.id.timeElapsed);
+        long interval = 1000;
         countDownTimer = new MyCountDownTimer(startTime, interval);
-        text.setText(text.getText() + String.valueOf((float)startTime/1000));
+        String temp = getString(R.string.time) + (float)startTime/1000;
+        text.setText( temp );
     }
     @Override
     public void onClick(View v)
@@ -49,13 +51,13 @@ public class ActivityCountDownTimer extends AppCompatActivity implements View.On
         {
             countDownTimer.start();
             timerHasStarted = true;
-            startB.setText("Pause");
+            startB.setText(R.string.pause);
         }
         else
         {
             countDownTimer.cancel();
             timerHasStarted = false;
-            startB.setText("RESET");
+            startB.setText(R.string.reset);
         }
     }
 
@@ -68,17 +70,26 @@ public class ActivityCountDownTimer extends AppCompatActivity implements View.On
 
         @Override
         public void onTick(long millisUntilFinished) {
-            text.setText("Time remain:" + (float)millisUntilFinished/1000);
+            String temp1,temp2;
+            temp1 = getString(R.string.time_remain) + (float)millisUntilFinished/1000;
+            temp2 = getString(R.string.timeElapsed) + (float)timeElapsed/1000;
+            text.setText( temp1 );
             timeElapsed = startTime - millisUntilFinished;
-            timeElapsedView.setText("Time Elapsed: " + String.valueOf((float)timeElapsed/1000));
+            timeElapsedView.setText( temp2 );
         }
 
         @Override
         public void onFinish() {
-            text.setTextColor(getResources().getColor(R.color.colorAccent));
-            text.setText("Time's up!");
-            timeElapsedView.setText("Time Elapsed: " + String.valueOf((float)startTime/1000));
-            startB.setText("Start Again");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                text.setTextColor( getResources().getColorStateList(R.color.colorAccent,getTheme()));
+            }
+
+            text.setText(R.string.time_up);
+
+            String temp = R.string.timeElapsed + String.valueOf((float)startTime/1000);
+            timeElapsedView.setText( temp );
+
+            startB.setText(R.string.start_again);
         }
     }
 

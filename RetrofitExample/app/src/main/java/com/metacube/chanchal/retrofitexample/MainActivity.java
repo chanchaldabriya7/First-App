@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.my_actiontoolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Retrofit Example");
+        actionBar.setTitle(R.string.activity_retrofit);
 
         ques = new ArrayList<String>();
         links = new ArrayList<String>();

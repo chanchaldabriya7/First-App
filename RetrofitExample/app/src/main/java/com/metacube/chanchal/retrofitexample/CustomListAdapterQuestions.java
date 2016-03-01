@@ -31,9 +31,6 @@ public class CustomListAdapterQuestions extends ArrayAdapter {
         TextView link = (TextView)rowView.findViewById(R.id.link_text);
 
         question.setText( title[position] );
-       /* if(desc[position].length()>100)
-            descript.setText(desc[position].substring(0,100)+"...");
-        else*/
         link.setText(desc[position]);
         return rowView;
     };

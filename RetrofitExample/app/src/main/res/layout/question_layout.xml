@@ -2,34 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/ques_text"
-        android:layout_weight="0.00"
-        android:textSize="17dp"
+        android:textSize="@dimen/question_font_size"
         android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginLeft="@dimen/list_margin_LR"
+        android:layout_marginRight="@dimen/list_margin_LR"/>
 
     <TextView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/list_margin_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/link_text"
-        android:layout_weight="0.16"
-        android:textColor="#0c73f0"
-        android:textSize="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:textColor="@color/colorHyperLink"
+        android:textSize="@dimen/link_font_size"
+        android:layout_marginLeft="@dimen/list_margin_LR"
+        android:layout_marginRight="@dimen/list_margin_LR"/>
     <include layout="@layout/my_toolbar_separator"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="@dimen/separator_margin_top"
+        android:layout_height="@dimen/separator_height" />
 
 </LinearLayout>

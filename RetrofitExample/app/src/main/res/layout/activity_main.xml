@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.metacube.chanchal.retrofitexample.MainActivity"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:orientation="vertical">
     <include layout="@layout/my_toolbar" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/list_questions"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:layout_marginRight="@dimen/main_margin_right"/>
 </LinearLayout>

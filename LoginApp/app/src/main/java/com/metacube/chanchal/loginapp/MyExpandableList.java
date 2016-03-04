@@ -56,5 +56,7 @@ public class MyExpandableList extends AppCompatActivity {
         CustomExpandableListAdapter expandableListViewAdapter = new CustomExpandableListAdapter(getApplicationContext(), parentHeaderInformation, child,id);
 
         expandableListView.setAdapter(expandableListViewAdapter);
+
+        expandableListView.expandGroup(0);
     }
 }

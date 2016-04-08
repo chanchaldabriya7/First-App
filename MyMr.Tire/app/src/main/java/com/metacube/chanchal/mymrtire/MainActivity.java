@@ -13,14 +13,20 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.PopupWindow;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     Button btnNotify;
+    Button btnApn, btnElevation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,23 @@ public class MainActivity extends AppCompatActivity
         btnNotify = (Button) findViewById(R.id.notify_btn);
         btnNotify.setOnClickListener(this);
 
+        btnApn = (Button) findViewById(R.id.btn_apn);
+        btnApn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ListViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnElevation = (Button) findViewById(R.id.btnElevation);
+        btnElevation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ElevationBorderScrollActivity.class);
+                startActivity(intent);
+            }
+        });
         toggle.setDrawerIndicatorEnabled(true);
     }
 
@@ -82,7 +105,7 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View v) {
         int id = v.getId();
         if(id == R.id.notify_btn) {
-            NotificationCompat.Builder mBuilder =
+            /*NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(android.R.drawable.btn_star_big_on)
                             .setContentTitle("My Notification")
@@ -108,7 +131,21 @@ public class MainActivity extends AppCompatActivity
             NotificationManager mNotificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 // mId allows you to update the notification later on.
-            mNotificationManager.notify(1, mBuilder.build());
+            mNotificationManager.notify(1, mBuilder.build());*/
+
+
+            LayoutInflater inflater = (LayoutInflater) MainActivity.this
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            //final PopupWindow popup = new PopupWindow(getApplicationContext());
+            View layout = inflater.inflate(R.layout.popup_reminder, (ViewGroup) findViewById(R.id.mainContent));
+            PopupWindow popup = new PopupWindow(300, 370);
+            popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+            popup.setContentView(layout);
+            // Set content width and height
+            popup.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+            popup.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+
         }
     }
 }

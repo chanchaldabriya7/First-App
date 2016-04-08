@@ -28,6 +28,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.metacube.chanchal.mymrtire.MainActivity" />
         </activity>
+        <activity android:name=".ListViewActivity" />
+        <activity android:name=".ElevationBorderScrollActivity"></activity>
     </application>
 
 </manifest>
